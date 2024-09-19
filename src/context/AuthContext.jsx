@@ -6,10 +6,15 @@ const authContext = createContext();
 export const useAuth = () => useContext(authContext);
 
 const AuthContext = ({ children }) => {
+  // const [emailActive, setEmailActive] = useState("");
   const [error, setError] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const navigate = useNavigate();
   const [loader, setLoader] = useState(false);
+
+  // const updateEmail = (newEmail) => {
+  //   setEmailActive(newEmail);
+  // };
 
   // ! Register
   const handleRegister = async (formData) => {
@@ -20,6 +25,19 @@ const AuthContext = ({ children }) => {
       setError(Object.values(error.response.data));
     }
   };
+
+  // // ! Activate
+  // const handleActivate = async (formData) => {
+  //   try {
+  //     await axios(
+  //       `${API}/activate/solnyshko2001@inbox.ru/A5ULYKQISQ/`,
+  //       formData
+  //     );
+  //     navigate("/login");
+  //   } catch (error) {
+  //     setError(Object.values(error.response.data));
+  //   }
+  // };
 
   //   ! Login
   const handleLogin = async (formData, email) => {
@@ -72,6 +90,9 @@ const AuthContext = ({ children }) => {
     loader,
     checkAuth,
     handleLogout,
+    // handleActivate,
+    // emailActive,
+    // updateEmail,
   };
 
   return <authContext.Provider value={values}>{children}</authContext.Provider>;

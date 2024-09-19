@@ -9,7 +9,7 @@ const Register = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
-  const { handleRegister, error } = useAuth();
+  const { handleRegister, error, updateEmail } = useAuth();
 
   // useEffect(() => {
   //   initTWE({ Input, Ripple });
@@ -42,7 +42,10 @@ const Register = () => {
       alert("Заполните все поля / All details are required");
     } else {
       let formData = new FormData();
+      formData.append("first_name", firstName);
+      formData.append("last_name", lastName);
       formData.append("email", email);
+      formData.append("phone_number", phoneNumber);
       formData.append("password", password);
       formData.append("password_confirm", passwordConfirm);
       handleRegister(formData);
@@ -150,7 +153,7 @@ const Register = () => {
           <div>
             {/* <label className="font-secondary">Last name</label> */}
             <input
-              type="password"
+              type="text"
               className="w-full font-secondary border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent placeholder-style"
               placeholder="Last name"
               onChange={(e) => setLastName(e.target.value)}
@@ -159,7 +162,7 @@ const Register = () => {
           <div>
             {/* <label className="font-secondary">Email</label> */}
             <input
-              type="password"
+              type="email"
               className="w-full font-secondary border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent placeholder-style"
               placeholder="Email"
               onChange={(e) => setEmail(e.target.value)}
