@@ -2,7 +2,7 @@
   "name": "ecohotel",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://oxanayu.github.io/ecohotel",
+  "homepage": ".",
   "dependencies": {
     "@headlessui/react": "^1.7.18",
     "@testing-library/jest-dom": "^5.17.0",
